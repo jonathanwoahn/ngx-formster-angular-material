@@ -1,0 +1,30 @@
+<div [ngClass]="options.class" [formGroup]="formGroup" fxLayout="column">
+  <div>
+    <span [innerHtml]="options.label" *ngIf="options.label"></span>
+  </div>
+
+  <div
+    fxFlex
+    fxLayout="row"
+    *ngFor="let group of formArray; let i = index;"
+    formArrayName="{{config.key}}">
+    <div [formGroupName]="i" fxFlex fxLayout="row" fxLayoutAlign="space-evenly center">
+      <form-group [formGroup]="group" [config]="getConfig(i)"></form-group>
+    </div>
+    <div fxLayout="column" fxLayoutAlign="center end">
+      <button
+        mat-icon-button
+        (click)="removeField(i)"
+        type="button"
+        color="warn">
+        <mat-icon>delete_outline</mat-icon>
+      </button>
+    </div>
+  </div>
+  
+  <div fxFlex fxLayout="row" fxLayoutAlign="center center">
+    <button mat-icon-button (click)="addField()" type="button" color="accent">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+</div>

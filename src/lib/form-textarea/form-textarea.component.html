@@ -1,0 +1,15 @@
+<mat-form-field [formGroup]="formGroup" style="width: 100%;">
+  <textarea
+    [formControl]="formGroup.controls[config.key]"
+    matInput
+    cdkTextareaAutosize
+    #autosize="cdkTextareaAutosize"
+    [cdkAutosizeMinRows]="options.minRows"
+    [cdkAutosizeMaxRows]="options.maxRows"
+    [placeholder]="options.placeholder">
+  </textarea>
+  <mat-hint align="start">{{options.leftHelperText}}</mat-hint>
+  <mat-error>
+    <ngx-formster-error-message [control]="formGroup.controls[config.key]"></ngx-formster-error-message>
+  </mat-error>
+</mat-form-field>

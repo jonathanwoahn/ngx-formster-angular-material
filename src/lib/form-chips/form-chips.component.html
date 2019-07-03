@@ -1,0 +1,29 @@
+<mat-form-field style="width: 100%;" [formGroup]="formGroup">
+  <mat-chip-list #chipList>
+    <mat-chip
+      [selectable]="options.selectable"
+      [removable]="options.removable"
+      (removed)="remove(value)"
+      *ngFor="let value of formGroup.controls[config.key].value">
+      {{value[options.labelProp]}}
+      <mat-icon matChipRemove *ngIf="options.removable">cancel</mat-icon>
+    </mat-chip>
+    <input
+      #chipInput
+      [placeholder]="options.placeholder"
+      [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+      [matAutocomplete]="auto"
+      [matChipInputFor]="chipList"
+      [matChipInputAddOnBlur]="options.addOnBlur"
+      (matChipInputTokenEnd)="add($event)"
+      [formControl]="inputCtrl">
+  </mat-chip-list>
+  <mat-autocomplete #auto="matAutocomplete" (optionSelected)="select($event)">
+    <mat-option *ngFor="let option of filteredOptions$ | async" [value]="option">
+      {{option[options.labelProp]}}
+    </mat-option>
+  </mat-autocomplete>
+  <mat-hint align="end" *ngIf="options.maxChips">
+    {{formGroup.get(config.key).value.length}} / {{options.maxChips}} {{options.maxChipsSuffix}}
+  </mat-hint>
+</mat-form-field>

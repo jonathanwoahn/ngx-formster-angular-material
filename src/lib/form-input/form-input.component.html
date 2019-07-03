@@ -1,0 +1,23 @@
+<!-- <div class="input-field" [formGroup]="formGroup">
+  <i class="material-icons prefix" *ngIf="options.prefixIcon">{{options.prefixIcon}}</i>
+  <input [formControl]="formGroup.controls[config.key]" [type]="options.type || 'text'" [id]="id" [ngClass]="{'invalid': formGroup.controls[config.key].invalid && formGroup.controls[config.key].dirty}">
+  <label [for]="id" *ngIf="options.label">{{options.label}}</label>
+  <span class="helper-text">
+    <ngx-formster-error-message [control]="formGroup.controls[config.key]">
+      {{options.leftHelperText}}
+    </ngx-formster-error-message>
+  </span>
+</div> -->
+
+<mat-form-field style="width: 100%" [formGroup]="formGroup">
+  <input
+    matInput
+    [placeholder]="options.placeholder"
+    [formControl]="formGroup.controls[config.key]"
+    [type]="options.type || 'text'"
+    [id]="id">
+  <mat-hint align="start">{{options.leftHelperText}}</mat-hint>
+  <mat-error>
+    <ngx-formster-error-message [control]="formGroup.controls[config.key]"></ngx-formster-error-message>
+  </mat-error>
+</mat-form-field>
