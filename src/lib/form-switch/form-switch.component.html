@@ -1,0 +1,9 @@
+<div [formGroup]="formGroup" style="padding: 10px;">
+  <mat-slide-toggle
+    [checked]="formGroup.controls[config.key].value"
+    [formControl]="formGroup.controls[config.key]">
+    {{options.rightLabel}}
+  </mat-slide-toggle>
+
+</div>
+

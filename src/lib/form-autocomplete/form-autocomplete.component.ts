@@ -11,6 +11,7 @@ import * as _ from 'lodash';
 })
 export class FormAutocompleteComponent extends BaseFormElementComponent implements OnInit {
 
+  toHighlight: string = '';
   filteredOptions$: Observable<any[]>;
 
   constructor() {
@@ -22,6 +23,7 @@ export class FormAutocompleteComponent extends BaseFormElementComponent implemen
     this.filteredOptions$ = combineLatest(control$, this.options.options$)
       .pipe(
         map(([search, values]: [string, any[]]) => {
+          this.toHighlight = search;
           if (!search || typeof search !== 'string') { return values; }
           return values
             .filter(val => {

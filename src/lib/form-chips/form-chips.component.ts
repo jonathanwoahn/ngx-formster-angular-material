@@ -20,6 +20,7 @@ export class FormChipsComponent extends BaseFormElementComponent implements OnIn
   selected: any[] = [];
   separatorKeysCodes: number[] = [COMMA, ENTER, TAB];
   inputCtrl = new FormControl();
+  toHighlight: string = '';
 
   filteredOptions$: Observable<any[]>;
 
@@ -43,6 +44,7 @@ export class FormChipsComponent extends BaseFormElementComponent implements OnIn
     this.filteredOptions$ = combineLatest(input$, this.options.options$)
       .pipe(
         map(([search, values]: [string, any[]]) => {
+          this.toHighlight = search;
           if (!search || typeof search !== 'string') { return values; }
           return _.chain(values)
             .filter(val => (val[this.options.labelProp] as string).toLowerCase().indexOf(search.toLowerCase()) > -1)

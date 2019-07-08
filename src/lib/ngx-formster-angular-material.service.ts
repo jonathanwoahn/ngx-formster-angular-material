@@ -6,6 +6,8 @@ import { FormSelectComponent } from './form-select/form-select.component';
 import { FormTextareaComponent } from './form-textarea/form-textarea.component';
 import { FormAutocompleteComponent } from './form-autocomplete/form-autocomplete.component';
 import { FormArrayComponent } from './form-array/form-array.component';
+import { FormCheckboxComponent } from './form-checkbox/form-checkbox.component';
+import { FormSwitchComponent } from './form-switch/form-switch.component';
 
 @Injectable({
   providedIn: 'root'
@@ -22,14 +24,14 @@ export class NgxFormsterAngularMaterialService extends NgxFormsterComponentProvi
         type: 'chips',
         component: FormChipsComponent,
       },
-      // {
-      //   type: 'switch',
-      //   component: FormSwitchComponent,
-      // },
-      // {
-      //   type: 'checkbox',
-      //   component: FormCheckboxComponent,
-      // },
+      {
+        type: 'switch',
+        component: FormSwitchComponent,
+      },
+      {
+        type: 'checkbox',
+        component: FormCheckboxComponent,
+      },
       {
         type: 'select',
         component: FormSelectComponent,
